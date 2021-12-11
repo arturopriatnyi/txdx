@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TodosModule } from './todos/todos.module';
 
 @Module({
   imports: [
@@ -19,9 +20,10 @@ import { AppService } from './app.service';
         password: configService.get('POSTGRES_PASSWORD') ?? 'password',
         database: configService.get('POSTGRES_DATABASE') ?? 'txdx',
         entities: [__dirname + '/**/*.entity.{ts,js}'],
-        synchronize: configService.get('ENV') === 'dev',
+        synchronize: configService.get('ENV') !== 'prod',
       }),
     }),
+    TodosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
