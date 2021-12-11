@@ -1,0 +1,14 @@
+# dependencies related
+node_modules/
+
+# testing related
+coverage/
+
+# build related
+dist/
+
+# environment related
+.env
+
+# IDE related
+.idea/
